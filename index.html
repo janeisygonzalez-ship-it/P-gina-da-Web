@@ -86,3 +86,42 @@
           
   </script>
   </html>
+<script>
+        // Interacción 1: Scroll Suave
+        function scrollToGallery() {
+            document.getElementById('galeria').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Interacción 2: Filtro de Galería
+        function filterGallery(category) {
+            const cards = document.querySelectorAll('.card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Interacción 3: Generador de Datos Históricos
+        const facts = [
+            "El conflicto involucró a más de 100 millones de personas de más de 30 países distintos.",
+            "La Batalla de Kursk (1943) es considerada la batalla de tanques más grande de la historia.",
+            "El código Enigma utilizado por la marina alemana fue descifrado por un equipo liderado por Alan Turing.",
+            "El ataque a Pearl Harbor el 7 de diciembre de 1941 provocó la entrada oficial de Estados Unidos en el conflicto.",
+            "El Día D (6 de junio de 1944) representó el desembarco anfibio más grande jamás realizado."
+        ];
+
+        function nextFact() {
+            const factDisplay = document.getElementById('factDisplay');
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            factDisplay.innerText = facts[randomIndex];
+        }
+    </script>
+</body>
